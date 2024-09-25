@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import  login from '../assets/Images/login.jpg'
 
 const LoginPage = () => {
   return (
@@ -8,8 +9,8 @@ const LoginPage = () => {
         {/* Left Side - Image */}
         <Col md={6} className="d-none d-md-flex bg-light justify-content-center align-items-center">
           <img
-            src="https://via.placeholder.com/600x400" // Replace with your image URL
-            alt="Login Illustration"
+            src={login} 
+            alt="Login"
             className="img-fluid"
             style={{ maxHeight: '70%' }}
           />
