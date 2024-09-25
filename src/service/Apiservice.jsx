@@ -1,13 +1,26 @@
 import axios from 'axios';
-import { API_ENDPOINTS } from '../config';
+import { BASE_URL } from '../config';
 
 const axiosInstance = axios.create({
-    baseURL: API_ENDPOINTS, // This can be set globally or configured per request.
+    baseURL: BASE_URL, // This can be set globally or configured per request.
     headers: {
         'Content-Type': 'application/json',
     },
 });
-
+axiosInstance.interceptors.request.use(
+    (config) => {
+      const token = localStorage.getItem('token'); 
+      
+      if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`;
+      }
+  
+      return config; 
+    },
+    (error) => {
+      return Promise.reject(error); 
+    }
+  );
 const getRequest = async (url) => {
     try {
         const response = await axiosInstance.get(url);
@@ -54,6 +67,7 @@ const deleteRequest = async (url) => {
 };
 
 export {
+    axiosInstance,
     getRequest,
     postRequest,
     putRequest,

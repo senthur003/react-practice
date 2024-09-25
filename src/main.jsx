@@ -9,7 +9,8 @@ import Aboutus from './components/Aboutus.jsx';
 import Contactus from './components/Contactus.jsx';
 import Joinus from './components/Joinus.jsx'
 import Layout from './components/Layout.jsx';
-import Login from './components/Login.jsx'
+import Login from './components/Login.jsx';
+import ForgetPassword from './components/ForgetPassword.jsx';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
@@ -17,13 +18,14 @@ root.render(
   <React.StrictMode>
     <Router>
       <Routes>
-        <Route path="/" element={<Login />}>
-          <Route path="layout" element={<Layout />} />
-          <Route path="home" element={<Home />} />
-          <Route path="aboutus" element={<Aboutus />} />
-          <Route path="contactus" element={<Contactus />} />
-          <Route path="joinus" element={<Joinus />} />
-        </Route>
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="layout" element={<Layout />} />
+        <Route path="home" element={<Home />} />
+        <Route path="aboutus" element={<Aboutus />} />
+        <Route path="contactus" element={<Contactus />} />
+        <Route path="joinus" element={<Joinus />} />
+        <Route path="/forgot-password" element={<ForgetPassword />} />
       </Routes>
     </Router>
   </React.StrictMode>

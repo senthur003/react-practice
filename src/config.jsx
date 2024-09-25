@@ -1,1 +1,4 @@
-const BASE_URL = 'https://localhost:8000';
+const BASE_URL = 'https://app-test.med.bot';
+
+
+export { BASE_URL };
