@@ -40,3 +40,44 @@
 .read-the-docs {
   color: #888;
 }
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+  #root {
+    min-width: 320px; /* Set a minimum width for xs devices */
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  #root {
+    min-width: 540px; /* Set a minimum width for sm devices */
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #root {
+    min-width: 720px; /* Set a minimum width for md devices */
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  #root {
+    min-width: 960px; /* Set a minimum width for lg devices */
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  #root {
+    min-width: 1140px; /* Set a minimum width for xl devices */
+  }
+}
+
+/* Extra extra large devices (very large desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  #root {
+    min-width: 1280px; /* Set a minimum width for xxl devices */
+  }
+}
