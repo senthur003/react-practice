@@ -1,11 +1,12 @@
 import React from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import suriya from "../assets/Images/suriya.jpg";
 import audilogo from "../assets/Images/audilogo.webp";
 import Stack from 'react-bootstrap/Stack';
+import { useSelector } from 'react-redux';
+
 const NavbarComponent = () => {
-  const userName = "Mohana Vigneshwaran";
+  const userInfo = useSelector((state) => state.user.userInfo);
+  const userName = userInfo.username;
   const profileImage = suriya;
   return (
 
