@@ -3,6 +3,7 @@ import { Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
+  const userType = localStorage.getItem('userType');
   return (
       <div className="d-flex flex-column vh-100 bg-light p-3" style={{ width: '250px' }}>
         <Nav className="flex-column">
@@ -28,6 +29,11 @@ const Sidebar = () => {
             Medical Report
           </Nav.Link>
 
+          {(userType === 'doctor'&&
+          <Nav.Link as={NavLink} to="/home/appointment" className="text-dark text-start">
+           Refferal
+          </Nav.Link>)}
+           
           <Nav.Link as={NavLink} to="/home/appointment" className="text-dark text-start">
            LogOut
           </Nav.Link>

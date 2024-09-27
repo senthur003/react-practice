@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import login from '../assets/Images/login.jpg';
 import { Link } from 'react-router-dom';
-import { loginApi, getUserDetails } from '../service/Authservice';
+import { loginApi, getUserDetails,setUserDetails } from '../service/Authservice';
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -21,6 +21,7 @@ const LoginPage = () => {
       localStorage.setItem('token', response.access);
       const UserDetails = await getUserDetails();
       console.log('User Details:', UserDetails);
+      setUserDetails(UserDetails);
       window.location.href = '/home';
     } catch (error) {
       console.error('Login failed:', error.message);
