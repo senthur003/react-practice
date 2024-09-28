@@ -1,9 +1,24 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { clearUserDetails } from '../userSlice'; // Import your action
+import { useNavigate } from 'react-router-dom'; 
+import { persistor } from '../store';
+import { useSelector } from 'react-redux';
+
 
 const Sidebar = () => {
-  const userType = localStorage.getItem('userType');
+  const dispatch = useDispatch();
+  const navigate = useNavigate(); 
+  const userInfo = useSelector((state) => state.user.userInfo);
+  const userType = userInfo.user_type;
+  
+  const handleLogout = () => {
+    dispatch(clearUserDetails());
+    persistor.purge();
+    navigate('/login');
+  };
   return (
       <div className="d-flex flex-column vh-100 bg-light p-3" style={{ width: '250px' }}>
         <Nav className="flex-column">
@@ -29,14 +44,19 @@ const Sidebar = () => {
             Medical Report
           </Nav.Link>
 
-          {(userType === 'doctor'&&
+          {(userType === 'Doctor'&&
           <Nav.Link as={NavLink} to="/home/appointment" className="text-dark text-start">
            Refferal
           </Nav.Link>)}
            
-          <Nav.Link as={NavLink} to="/home/appointment" className="text-dark text-start">
-           LogOut
-          </Nav.Link>
+          <Nav.Link
+          as={NavLink}
+          to="/login" // Use to="/login" to update the URL
+          className="text-dark text-start"
+          onClick={handleLogout} // Call the logout function on click
+        >
+          LogOut
+        </Nav.Link>
 
         </Nav>
       </div>

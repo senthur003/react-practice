@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
 const Appointments = () => {
+  const [activeTab, setActiveTab] = useState('ongoing');
   return (
     <div className="App">
     <Tabs
-      defaultActiveKey="profile"
+      defaultActiveKey={activeTab}
+      onSelect={(k) => setActiveTab(k)}
       id="uncontrolled-tab-example"
       className="mb-3"
     >

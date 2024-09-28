@@ -7,7 +7,8 @@ import { useSelector } from 'react-redux';
 const NavbarComponent = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
   const userName = userInfo.username;
-  const profileImage = suriya;
+  // const profileImage = suriya;
+  const profileImage = userInfo.profile_picture;
   return (
 
     <Stack direction="horizontal" gap={3}>

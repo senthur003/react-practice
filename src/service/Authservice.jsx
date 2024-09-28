@@ -19,11 +19,4 @@ const getUserDetails = async ()=> {
     }
 }
 
-const setUserInfo= (userDetails) => {
-    // localStorage.setItem('userDetails', JSON.stringify(userDetails));
-    localStorage.setItem('userType', userDetails.user_type);
-    localStorage.setItem('userName', userDetails.username);
-    localStorage.setItem('UserId', userDetails.uuid);
-    localStorage.setItem('hospitalId', userDetails.hospital_id);
-}
-export { loginApi,getUserDetails,setUserInfo };
+export { loginApi,getUserDetails };

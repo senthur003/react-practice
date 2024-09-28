@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import login from '../assets/Images/login.jpg';
 import { Link } from 'react-router-dom';
-import { loginApi, getUserDetails,setUserInfo } from '../service/Authservice';
+import { loginApi, getUserDetails } from '../service/Authservice';
 import { useDispatch } from 'react-redux';
 import { setUserDetails } from '../userSlice';
 const LoginPage = () => {
@@ -24,7 +24,6 @@ const LoginPage = () => {
       localStorage.setItem('token', response.access);
       const UserDetails = await getUserDetails();
       console.log('User Details:', UserDetails);
-      setUserInfo(UserDetails);
       dispatch(setUserDetails(UserDetails));
       window.location.href = '/home';
     } catch (error) {
