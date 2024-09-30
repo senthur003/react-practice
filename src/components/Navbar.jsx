@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 const NavbarComponent = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
-  const userName = userInfo.username;
+  const userName = 'Welcome ' + userInfo.username + ' ';
   // const profileImage = suriya;
   const profileImage = userInfo.profile_picture;
   return (
@@ -21,14 +21,16 @@ const NavbarComponent = () => {
       /></div>
       <div className="p-2 ms-auto"></div>
       
-      <div className="p-2"><img
+      <div className="p-2">
+      <span style={{ color: 'black' }}>{userName}</span>
+        <img
         src={profileImage}
         width="40"
         height="40"
         className="rounded-circle me-2"
         alt="Profile"
       />
-        <span style={{ color: 'black' }}>{userName}</span></div>
+        </div>
 
     </Stack>
 

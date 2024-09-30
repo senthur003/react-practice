@@ -18,6 +18,7 @@ import Appointments from './components/Appointments.jsx';
 import Consultation from './components/Consultation.jsx';
 import BookAppointment from './components/BookAppointment.jsx';
 import MedicalReport from './components/MedicalReport.jsx';
+import Profile from './components/Profile.jsx';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from './store';
 import { Provider } from 'react-redux';
@@ -42,6 +43,7 @@ root.render(
               <Route path="consultaion" element={<Consultation />} />
               <Route path="book-appointment" element={<BookAppointment />} />
               <Route path="medical-report" element={<MedicalReport />} />
+              <Route path="profile" element={<Profile />} />
             </Route>
 
             <Route path="aboutus" element={<Aboutus />} />

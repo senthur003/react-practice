@@ -23,31 +23,39 @@ const Sidebar = () => {
       <div className="d-flex flex-column vh-100 bg-light p-3" style={{ width: '250px' }}>
         <Nav className="flex-column">
 
+          {((userType === 'Doctor' || userType === 'Patient')&&
           <Nav.Link as={NavLink} to="/home/appointment" className="text-dark text-start">
             Appointments
-          </Nav.Link>
+          </Nav.Link>)}
         
+          {(userType === 'Patient'&&
           <Nav.Link as={NavLink} to="/home/book-appointment" className="text-dark text-start">
            Book Appointments
-          </Nav.Link>
+          </Nav.Link>)}
 
+          {(userType === 'Patient'&&
           <Nav.Link as={NavLink} to="/home/book-appointment" state={{ consultNow: 'true' }} className="text-dark  text-start">
             Emergency Consult
-          </Nav.Link>
+          </Nav.Link>)}
 
-
+          {(userType === 'Patient'&&
           <Nav.Link as={NavLink} to="/home/consultaion" className="text-dark text-start">
              Consultaion
-          </Nav.Link>
+          </Nav.Link>)}
 
+          {(userType === 'Patient'&&
           <Nav.Link as={NavLink} to="/home/medical-report" className="text-dark text-start">
             Medical Report
-          </Nav.Link>
+          </Nav.Link>)}
 
           {(userType === 'Doctor'&&
           <Nav.Link as={NavLink} to="/home/appointment" className="text-dark text-start">
            Refferal
           </Nav.Link>)}
+
+          <Nav.Link as={NavLink} to="/home/profile" className="text-dark text-start">
+           Profile
+          </Nav.Link>
            
           <Nav.Link
           as={NavLink}

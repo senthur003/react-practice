@@ -13,7 +13,8 @@ const Home = () => {
 
   useEffect(() => {
     // Automatically redirect to appointments with ongoing tab on page load
-    navigate('/home/appointment', { state: { defaultTab: 'ongoing' } });
+    if (location.pathname === '/home') {
+    navigate('/home/appointment', { state: { defaultTab: 'ongoing' } });}
   }, [navigate]);
   return (
     <div className="App">
