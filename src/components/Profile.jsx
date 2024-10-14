@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Form, Button, Row, Col } from 'react-bootstrap';
+import axios from 'axios';
 
 const Profile = () => {
     const [formData, setFormData] = useState({
@@ -16,11 +17,11 @@ const Profile = () => {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         if (name === 'dob') {
-            const age = calculateAge(value);  
+            const age = calculateAge(value);
             setFormData({
                 ...formData,
                 [name]: value,
-                age: age,  
+                age: age,
             });
         } else {
             setFormData({
@@ -40,13 +41,28 @@ const Profile = () => {
         const birthDate = new Date(dob);
         let age = today.getFullYear() - birthDate.getFullYear();
         const monthDifference = today.getMonth() - birthDate.getMonth();
-    
+
         if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
             age--;
         }
-    
+
         return age;
     };
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        // Fetch users from the backend
+        axios.get('http://localhost:5000/newUser')
+            .then((response) => {
+                console.log('Users fetched successfully:', response.data);
+                setUsers(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching users:', error);
+            });
+    }, []);
+    
+
 
     return (
         <Tabs
@@ -153,6 +169,14 @@ const Profile = () => {
 
             <Tab eventKey="Address" title="Address">
                 Address
+                <div>
+                    <h1>Users List</h1>
+                    <ul>
+                        {users.map((user, index) => (
+                            <li key={index}>{user.name} - {user.email}</li>
+                        ))}
+                    </ul>
+                </div>
             </Tab>
 
             <Tab eventKey="emergencycontact" title="Emergency Contact" >
